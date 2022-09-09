@@ -6,8 +6,8 @@ import Node from './composants/node'
 const cpt = {
   title: "IO318",
   position: {
-    x: "100",
-    y: "100"
+    x: "300",
+    y: "300"
   },
   pins:[
     { 
@@ -40,6 +40,10 @@ const cpt = {
 
 const cpt2 = {
   title: "IO300",
+  position: {
+    x: "0",
+    y: "0"
+  },
   pins:[
     { 
       id :1,
@@ -75,7 +79,7 @@ function App() {
   return (
     <div>
       < Node data={cpt}/>
-      {/* < Node data={cpt2}/> */}
+      < Node data={cpt2}/>
     </div>
   )
 }

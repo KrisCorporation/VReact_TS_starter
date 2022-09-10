@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import './Node.css'
+import { MouseEvent, useEffect, useState } from 'react'
+import './Node.scss'
 
 function Item(item: any, cdt: string) {
 
@@ -14,10 +14,25 @@ function Pos(position: any) {
 
 // style={Pos(props.data.position)}
 
-export default function Node(props: any) {
+type Props = {
+    data:{
+        title: string,
+        position: {
+            x: number,
+            y: number
+        },
+        pins:{ 
+            id :number,
+            label : string,
+            side : string
+            }[],
+    }
+}
 
-    const [pos, setPos] = useState({ x: "0", y: "0" })
-    const [initPos, setInit] = useState({ x: "0", y: "0" })
+export default function Node(props: Props) {
+
+    const [pos, setPos] = useState({ x: 0, y: 0 })
+    const [initPos, setInit] = useState({ x: 0, y: 0 })
 
     // function handleClick(e:Event){
 
@@ -43,22 +58,22 @@ export default function Node(props: any) {
         setPos({x:props.data.position.x,y:props.data.position.y})
     },[])
 
-    function handleMove(e: any) {
+    function handleMove(e: MouseEvent) {
 
         if (selected) {
-            let X = e.pageX - parseInt(initPos.x)
-            let Y = e.pageY - parseInt(initPos.y)
+            let X = e.pageX - initPos.x
+            let Y = e.pageY - initPos.y
 
             console.log(X, Y)
-            setPos({ x: X.toString(), y: Y.toString() })
+            setPos({ x: X, y: Y })
         }
     }
 
-    function handleDClick(e: any) {
+    function handleDClick(e: MouseEvent) {
 
-        let X = e.pageX - parseInt(pos.x)
-        let Y = e.pageY - parseInt(pos.y)
-        setInit({ x: X.toString(), y:Y.toString() })
+        let X = e.pageX - pos.x
+        let Y = e.pageY - pos.y
+        setInit({ x: X, y:Y })
         console.log(initPos)
         selectMe(!selected)
     }

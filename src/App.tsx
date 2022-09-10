@@ -6,8 +6,8 @@ import Node from './composants/node'
 const cpt = {
   title: "IO318",
   position: {
-    x: "300",
-    y: "300"
+    x: 300,
+    y: 300
   },
   pins:[
     { 
@@ -41,8 +41,8 @@ const cpt = {
 const cpt2 = {
   title: "IO300",
   position: {
-    x: "0",
-    y: "0"
+    x: 0,
+    y: 0
   },
   pins:[
     { 

@@ -70,6 +70,11 @@ const cpt2 = {
       label : "Ouput 5",
       side : "l"
     },
+    { 
+      id :6,
+      label : "Ouput 5",
+      side : "l"
+    }
   ]
 }
 

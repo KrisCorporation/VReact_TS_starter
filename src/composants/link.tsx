@@ -3,6 +3,6 @@ type Props ={
     
 }
 
-export default function Node(props: Props) {
+export default function Link(props: Props) {
 
 }

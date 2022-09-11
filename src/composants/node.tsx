@@ -1,32 +1,10 @@
 import { MouseEvent, useEffect, useState } from 'react'
+import { node } from '../__types'
+import Item from './item'
 import './Node.scss'
 
-function Item(item: any, cdt: string) {
-
-    if (item.side == cdt)
-        return <div key={item.id} className='nodeitem'>{item.label}</div>
-
-}
-
-function Pos(position: any) {
-    return 'translate(' + position.x + 'px,' + position.y + 'px)'
-}
-
-// style={Pos(props.data.position)}
-
 type Props = {
-    data:{
-        title: string,
-        position: {
-            x: number,
-            y: number
-        },
-        pins:{ 
-            id :number,
-            label : string,
-            side : string
-            }[],
-    }
+    dataNode :node
 }
 
 export default function Node(props: Props) {
@@ -44,7 +22,7 @@ export default function Node(props: Props) {
     }
 
     useEffect(()=>{
-        setPos({x:props.data.position.x,y:props.data.position.y})
+        setPos({x:props.dataNode.position.x,y:props.dataNode.position.y})
     },[])
 
     function handleMove(e: MouseEvent) {
@@ -53,7 +31,7 @@ export default function Node(props: Props) {
             let X = e.pageX - initPos.x
             let Y = e.pageY - initPos.y
 
-            console.log(X, Y)
+            // console.log(X, Y)
             setPos({ x: X, y: Y })
         }
     }
@@ -63,19 +41,19 @@ export default function Node(props: Props) {
         let X = e.pageX - pos.x
         let Y = e.pageY - pos.y
         setInit({ x: X, y:Y })
-        console.log(initPos)
+        // console.log(initPos)
         selectMe(!selected)
     }
 
     //
     return <div onMouseMove={(e) => handleMove(e)} onDoubleClick={(e) => handleDClick(e)} style={myStyle()} className='node' >
-        <div className='nodeheader'>{props.data.title}</div>
+        <div className='nodeheader'>{props.dataNode.title}</div>
         <div className='nodebody'>
             <div className='nodebodyleft'>
-                {props.data.pins.map((pin: any) => Item(pin, "r"))}
+                {props.dataNode.pins.map((pin: any) => <Item item={pin} cdt={"r"}/>)}
             </div>
             <div className='nodebodyright'>
-                {props.data.pins.map((pin: any) => Item(pin, "l"))}
+                {props.dataNode.pins.map((pin: any) => <Item item={pin} cdt={"l"}/>)}
             </div>
         </div>
     </div>

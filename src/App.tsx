@@ -1,91 +1,31 @@
-import { useState } from 'react'
-import './App.scss'
+import { useEffect, useState } from 'react'
+
 import Node from './composants/node'
+import {myData} from './__data'
+import { node } from './__types'
 
-const cpt = {
-  title: "IO318",
-  position: {
-    x: 300,
-    y: 300
-  },
-  pins:[
-    { 
-      id :1,
-      label : "Ouput 1",
-      side : "r"
-    },
-    { 
-      id :2,
-      label : "Ouput 2",
-      side : "r"
-    },
-    { 
-      id :3,
-      label : "Ouput 3",
-      side : "r"
-    },
-    { 
-      id :4,
-      label : "Ouput 4",
-      side : "l"
-    },
-    { 
-      id :5,
-      label : "Ouput 5",
-      side : "l"
-    },
-  ]
-}
+import './App.scss'
 
-const cpt2 = {
-  title: "IO300",
-  position: {
-    x: 0,
-    y: 0
-  },
-  pins:[
-    { 
-      id :1,
-      label : "Ouput 1",
-      side : "l"
-    },
-    { 
-      id :2,
-      label : "Ouput 2",
-      side : "l"
-    },
-    { 
-      id :3,
-      label : "Ouput 3",
-      side : "l"
-    },
-    { 
-      id :4,
-      label : "Ouput 4",
-      side : "l"
-    },
-    { 
-      id :5,
-      label : "Ouput 5",
-      side : "l"
-    },
-    { 
-      id :6,
-      label : "Ouput 5",
-      side : "l"
-    }
-  ]
-}
+import { useDispatch } from 'react-redux'
+import {init} from './feature/test/nodesSlice'
 
 function App() {
   const [count, setCount] = useState(0)
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch(init(myData))
+    console.log("myData")
+  },[])
 
   return (
     <div>
-      < Node data={cpt}/>
-      < Node data={cpt2}/>
+      {/* {countCounter} */}
+      { myData.nodes.map((node:node)=> <Node key={node.id} dataNode={node}/>)}
+      {/* <Node dataNode={myData.nodes[0]}/> */}
     </div>
   )
 }
 
 export default App
+{/* <Node data={node}/> */}

@@ -33,25 +33,14 @@ export default function Node(props: Props) {
 
     const [pos, setPos] = useState({ x: 0, y: 0 })
     const [initPos, setInit] = useState({ x: 0, y: 0 })
-
-    // function handleClick(e:Event){
-
-    //     console.log(e)
-    //     setPos({x: e.pageX, y:e.pageY})
-
-    // }
-
     const [selected, selectMe] = useState(false)
 
     function myStyle() {
-
         console.log(pos)
         return {
             border: selected ? "1px solid #646cff" : undefined,
             transform: "translate( " + pos.x + "px," + pos.y + "px)"
-        }
-        
-
+        } 
     }
 
     useEffect(()=>{

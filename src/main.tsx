@@ -5,13 +5,19 @@ import store from './store/store'
 import { Provider } from 'react-redux'
 
 import App from './App'
+import Debug from './debug'
 
-import './index.scss'
+// import './index.scss'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <div className='test'>
+        <Debug />
+        <App />
+      </div>
     </Provider>
   </React.StrictMode>
 )
+
+console.log(store.getState())

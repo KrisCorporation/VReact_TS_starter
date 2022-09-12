@@ -83,13 +83,34 @@ const cpt2: node = {
   ]
 }
 
+const cpt3: node = {
+  id: 3,
+  title: "IO3000",
+  position: {
+    x: 370,
+    y: 60
+  },
+  pins: [
+    {
+      id: 1,
+      label: "Ouput 1",
+      side: "r"
+    },
+    {
+      id: 2,
+      label: "Ouput 2",
+      side: "l"
+    }
+  ]
+}
+
 const lk1: dataLink = {
   id: 1,
   label: "toto",
   color: "red",
   pinStart: {
     nodeId: 1,
-    pinId: 1
+    pinId: 2
   },
   pinEnd: {
     nodeId: 2,
@@ -97,14 +118,30 @@ const lk1: dataLink = {
   }
 }
 
+const lk2: dataLink = {
+  id: 2,
+  label: "truc",
+  color: "green",
+  pinStart: {
+    nodeId: 3,
+    pinId: 1
+  },
+  pinEnd: {
+    nodeId: 1,
+    pinId: 5
+  }
+}
+
 const myData: Data = {
 
   nodes: [
     cpt,
-    cpt2
+    cpt2,
+    cpt3
   ],
   links: [
-    lk1
+    lk1,
+    lk2
   ]
 
 }

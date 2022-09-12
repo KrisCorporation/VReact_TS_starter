@@ -1,0 +1,47 @@
+
+{
+  type: 'nodes/addLink',
+  payload: {
+    id: 3,
+    label: "Machin",
+    color: "yellow",
+    pinStart: {
+      nodeId: 2,
+      pinId: 1
+    },
+    pinEnd: {
+      nodeId: 3,
+      pinId: 1
+    }
+  }
+}
+
+{
+    type: 'nodes/addCpt',
+    payload: {
+        id: 5,
+        title: "AddCpt",
+        position: {
+          x: 100,
+          y: 100
+        },
+        pins: [
+          {
+            id: 1,
+            label: "Ouput 1",
+            side: "r"
+          },
+          {
+            id: 2,
+            label: "Ouput 2",
+            side: "l"
+          },
+          {
+            id: 3,
+            label: "Ouput 3",
+            side: "r"
+          }
+        ]
+      }
+  }
+

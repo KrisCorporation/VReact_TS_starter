@@ -5,7 +5,6 @@ import { node } from "../__types";
 import Item from "./item";
 import "./Node.scss";
 
-
 type Props = {
   arrayIdx : number
   dataNode: node;
@@ -22,18 +21,11 @@ export default function Node(props: Props) {
   const [selected, selectMe] = useState(false);
 
   const dispatch = useDispatch()
-  const screenPos = useSelector((state:any) => state.nodeReducer.screenPos)
-  const NodeIdSelected = useSelector((state:any) => state.selectedNode)
 
   function myStyle() {
-    // console.log(pos)
     return {
       boxShadow: selected ? "5px 5px 9px #57A3E5" : undefined,
-      // border: selected ? "1px solid #646cff" : undefined,
-      // transform: "translate( " + pos.x + "px," + pos.y + "px)",
       transform: "translate( " + pos.x + "px," + pos.y + "px)",
-      
-
     };
   }
 
@@ -41,15 +33,6 @@ export default function Node(props: Props) {
     setPos({ x: props.dataNode.position.x, y: props.dataNode.position.y });
     setId(props.dataNode.id)
   }, []);
-
-  // useEffect(() => {
-  //   if (selected) {
-  //     let X = screenPos.x - initPos.x;
-  //     let Y = screenPos.y - initPos.y;
-  //     dispatch(changePosition([props.arrayIdx,{ x: X, y: Y }]))
-  //     setPos({ x: X, y: Y });
-  //   }
-  // }, [screenPos]);
 
   useEffect(() => {
     if (selected) {
@@ -68,7 +51,6 @@ export default function Node(props: Props) {
     selectMe(!selected);
   }
 
-  //
   return (
     <div style={myStyle()} className="node">
       <div onDoubleClick={(e) => handleDClick(e)} className="nodeheader">
@@ -88,13 +70,4 @@ export default function Node(props: Props) {
       </div>
     </div>
   );
-}
-
-{
-  /* <div className='nodeitem'>OUTPUT 1</div>
-            <div className='nodeitem'>OUTPUT 1</div>
-            <div className='nodeitem'>OUTPUT 1</div>
-            <div className='nodeitem'>OUTPUT 1</div>
-            <div className='nodeitem'>OUTPUT 1</div>
-            <div className='nodeitem'>OUTPUT 1</div> */
 }

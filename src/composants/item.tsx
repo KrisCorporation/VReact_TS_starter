@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { node } from "../__types"
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
     cpt: number
 }
 
-import { addOther, initOffset, removeOther } from '../feature/test/nodesSlice'
+import { addOther, initOffset, removeOther, selecPinToggle } from '../feature/test/nodesSlice'
 import { useCallback, useEffect, useRef, useState } from "react"
 
 export default function Item(props: Props) {
@@ -28,6 +28,13 @@ export default function Item(props: Props) {
         }
     }, []);
 
+    const pinRefresh = useSelector((state:any)=>state.nodeReducer.pinRefresh)
+    const testSelected = useSelector((state:any)=>state.nodeReducer.storeNodes.nodes[props.cptIdx].pins[props.arrayIdx].selected)
+
+    // useEffect(()=>{
+    //     handleClick()
+    // },[testSelected])
+
     function Test(node: HTMLDivElement) {
         const x = props.cdt == "r" ? node.offsetLeft : node.offsetLeft + node.clientWidth
         const y = node.offsetTop + node.clientHeight / 2;
@@ -36,8 +43,8 @@ export default function Item(props: Props) {
 
     function myStyle() {
         return {
-            color: selected ? '#57A3E5' : undefined,
-            fontWeight: selected ? 'bold' : undefined
+            color: testSelected ? '#57A3E5' : undefined,
+            fontWeight: testSelected ? 'bold' : undefined
         }
     }
 
@@ -50,13 +57,16 @@ export default function Item(props: Props) {
     }
 
     function handleClick() {
-        !selected ? dispatch(addOther(prepareData())) : undefined,
-            selected ? dispatch(removeOther(prepareData())) : undefined
-        setSelected(!selected)
+        !testSelected ? dispatch(addOther(prepareData())) : undefined,
+        testSelected ? dispatch(removeOther(prepareData())) : undefined
+        dispatch(selecPinToggle({ cptIdx: props.cptIdx, itemIdx: props.arrayIdx, selectedValue: !testSelected }))
+        console.log(testSelected)
+        
+        // setSelected(!selected)
     }
 
     if (props.item.side == props.cdt)
-        return <div ref={elRef} style={myStyle()} onClick={() => handleClick()} key={props.item.id} className='nodeitem'>{props.item.label}</div>
+        return <div ref={elRef} style={myStyle()} onClick={() => handleClick()} key={props.item.id} className='nodeitem'>{props.item.label} {pinRefresh}</div>
     else
         return null
 }

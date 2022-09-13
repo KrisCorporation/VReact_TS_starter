@@ -5,8 +5,8 @@ const cpt: node = {
   id:1,
   title: "IO318",
   position: {
-    x: 300,
-    y: 300
+    x: 400,
+    y: 120
   },
   pins: [
     {
@@ -87,8 +87,8 @@ const cpt3: node = {
   id: 3,
   title: "IO3000",
   position: {
-    x: 370,
-    y: 60
+    x: 780,
+    y: 80
   },
   pins: [
     {

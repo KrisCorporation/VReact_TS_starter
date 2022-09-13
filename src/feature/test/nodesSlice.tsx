@@ -7,7 +7,7 @@ export const nodesSlice = createSlice({
     screenPos : {},
     selectedNode: 0,
     selectedPin: [],
-    itemOffset:[]
+    pinRefresh: false
   },
   reducers: {
     init: (state, actions) => {
@@ -25,6 +25,18 @@ export const nodesSlice = createSlice({
     addPin: (state,actions) => {
       // state.storeNodes. .pins.filter(pin=>pin.id == actions.payload)
     },
+    selecPinToggle: (state, actions)=>{
+      state.storeNodes.nodes[actions.payload.cptIdx].pins[actions.payload.itemIdx].selected = !state.storeNodes.nodes[actions.payload.cptIdx].pins[actions.payload.itemIdx].selected
+    },
+    forcePinStatus: (state, actions)=>{
+      state.storeNodes.nodes[actions.payload.cptIdx].pins[actions.payload.itemIdx].selected = actions.payload.selectValue
+    },
+    resetPinStatus: (state)=>{
+      state.storeNodes.nodes.forEach(node=>{
+        node.pins.forEach(pin=>{
+            pin.selected = false
+        })
+    })},
     addOther: (state, actions) => {
       state.selectedPin.push(actions.payload);
     },
@@ -39,6 +51,9 @@ export const nodesSlice = createSlice({
     }, 
     addLink : (state, actions)=>{
       state.storeNodes.links.push(actions.payload)
+      state.pinRefresh = state.pinRefresh ? false : true
+      state.selectedPin = []
+      // resetPinStatus(state)
     },
     addCpt : (state, actions)=>{
       state.storeNodes.nodes.push(actions.payload)
@@ -56,7 +71,10 @@ export const {
   removeOther,
   initOffset, 
   addLink,
-  addCpt
+  addCpt,
+  selecPinToggle,
+  forcePinStatus,
+  resetPinStatus
 } = nodesSlice.actions;
 export default nodesSlice.reducer;
 

@@ -13,6 +13,7 @@
 type node = {
     id:number,
     title: string,
+    selected?:boolean,
     position: {
         x: number,
         y: number
@@ -20,7 +21,8 @@ type node = {
     pins: {
         id: number,
         label: string,
-        side: string
+        side: string,
+        selected?: boolean
     }[]
 }
 
@@ -35,7 +37,8 @@ type dataLink = {
     label: string,
     color: string,
     pinStart: Pin,
-    pinEnd: Pin
+    pinEnd: Pin,
+    selected?:boolean
 }
 
 type Data = {

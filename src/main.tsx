@@ -10,14 +10,14 @@ import Debug from './debug'
 // import './index.scss'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <div className='test'>
         <Debug />
         <App />
       </div>
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
 )
 
 console.log(store.getState())

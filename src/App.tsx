@@ -8,39 +8,53 @@ import { useSelector } from "react-redux";
 import './App.scss'
 
 import { useDispatch } from 'react-redux'
-import { addLink, changeScreenPos, init } from './feature/test/nodesSlice'
+import { addLink, changeScreenPos, forcePinStatus, init,resetPinStatus } from './feature/test/nodesSlice'
 import Link from './composants/link'
+import dataPreparator from './dataPreparator';
 
 function App() {
   const [mousePos, setmousePos] = useState({ x: 0, y: 0 })
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(init(myData))
+
+    // const myData.nodes = myData.nodes.map((node)=>{[...node, {selected:false}] })
+    // console.log(myData)
+    let data = dataPreparator(myData)
+    console.log(data)
+    dispatch(init(data))
+
   }, [])
 
   function handleClick() {
 
     if (SelectedPin.length >= 2) {
-      const leader = SelectedPin[0]
-      const slave =SelectedPin[1]
-      const NewLink = {
-        id: Offset.links.length + 1,
-        label: "Machin",
-        color: "#0d6efd",
-        pinStart: {
-          nodeId: leader.nodeId,
-          pinId: leader.itemId
-        },
-        pinEnd: {
-          nodeId: slave.nodeId,
-          pinId: slave.itemId
+      let pinSelected = [ ...SelectedPin ]
+
+      let master = pinSelected.shift()
+      let slaves = pinSelected
+
+      // dispatch(forcePinStatus({ cptIdx: master.cptIdx, itemIdx: props.arrayIdx, selectedValue: !testSelected }))
+
+      slaves.map((slave: any) => {
+
+        const NewLink = {
+          id: new Date().valueOf(),
+          label: "Machin",
+          color: "#0d6efd",
+          pinStart: {
+            nodeId: master.nodeId,
+            pinId: master.itemId
+          },
+          pinEnd: {
+            nodeId: slave.nodeId,
+            pinId: slave.itemId
+          }
         }
-      }
-
-      dispatch(addLink(NewLink))
+        dispatch(addLink(NewLink))
+        dispatch(resetPinStatus())
+      })
     }
-
   }
 
   const Offset = useSelector((state: any) => state.nodeReducer.storeNodes)

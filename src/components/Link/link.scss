@@ -1,0 +1,88 @@
+@import '/src/App.scss';
+
+$linkColor : #b1b1b7;
+$linkColorSelected : #28b3dd;
+
+.link{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.path{
+    stroke: $linkColor  ;
+    fill: none;
+    stroke-width: 4;
+}
+
+.path.selected{
+    stroke: $linkColorSelected  ;
+    stroke-width: 5;
+}
+
+.path.animated{
+    stroke-dasharray: 8;
+    animation: dashdraw .5s linear infinite;
+}
+
+.path.animated.reverse{
+    animation: dashdrawReversed .5s linear infinite;
+}
+
+@keyframes dashdraw {
+    to {
+        stroke-dashoffset: 16;
+    }
+}
+
+@keyframes dashdrawReversed {
+    to {
+        stroke-dashoffset: -16;
+    }
+}
+
+.linkText{
+    user-select: none;
+    fill: $linkColor;
+    font-family: 'Quicksand', sans-serif;
+    stroke:none
+}
+
+.linkText.selected{
+    fill: $linkColorSelected 
+}
+
+.linkTextBck{
+    fill: $bckColor;
+    // stroke:aqua;
+}
+
+.context{
+    user-select: none;
+    position: absolute;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: aliceblue;
+    color: black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.contextItem{
+    // border-top: solid;
+    // border-bottom: solid;
+    // border-color: #28b3dd;
+    // border-width: 3px;
+}
+
+hr {
+    margin-left:  0;
+    margin-right: 0;
+    color:#b1b1b7;
+    // border-width: 1px;
+    border: solid 1px;
+    // border-radius: 1px;
+}
+

@@ -1,0 +1,71 @@
+.bodyNode{
+    position: absolute;
+    background-color: aliceblue;
+    color:black;
+    width: 75px;
+    height: 75px;
+    display: block;
+    border-radius: 10px;
+    user-select: none;
+    font-size: larger;
+}
+
+.rightNode{
+    display: table-cell;
+    width: 25px;
+    height: 50%;
+    line-height: 200%;
+    position: absolute;
+    right: 0;
+    top: 25%;
+    text-align: right;
+    vertical-align: middle;
+    // padding: 5px;
+}
+
+.leftNode{
+    display: table-cell;
+    width: 25px;
+    height: 50%;
+    line-height: 200%;
+    position: absolute;
+    left: 0;
+    top: 25%;
+    text-align: left;
+    vertical-align: middle;
+    // padding: 5px;
+}
+
+.bottomNode{
+    width: 50%;
+    height: 25px;
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    left: 25%;
+}
+
+.topNode{
+    width: 50%;
+    height: 25px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 25%;
+}
+
+.topNode:hover{
+    background-color: aqua;
+}
+
+.rightNode:hover{
+    background-color: aqua;
+}
+
+.leftNode:hover{
+    background-color: aqua;
+}
+
+.bottomNode:hover{
+    background-color: aqua;
+}

@@ -1,32 +1,24 @@
-html, body {
-  margin:0px;
-  height:100%;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Quicksand&display=swap');
+
+
+$bckColor: rgb(26, 25, 43);
+$bckDotColor: #81818a;
+
+.app{
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: block;
+    background-color: $bckColor;
 }
 
-#root {
-
+.appBackground{
+    height: 100%;
+    width: 100%;
 }
 
-.test{
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  display: block;
-  background-color: #1E1E1E;
-}
-
-.debug{
-  background-color: #1E1E1E;
-  color: aliceblue;
-  border: white;
-  border: solid 1px;
-  margin-bottom: 20px;
-}
-
-.debuging{
-  // margin-bottom: 20px;
-}
-
-.controlers{
-  padding: 10px;
+.backgroundDot{
+    fill: $bckDotColor;
 }

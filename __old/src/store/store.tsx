@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import dataReducer from '../features/dataSlice'
+import nodeReducer from '../feature/test/nodesSlice'
+import otherReducer from '../feature/test/otherSlice'
+
 
 const reducers = combineReducers({
 
-    dataReducer,
-    // otherReducer
+    nodeReducer,
+    otherReducer
 
 })
 

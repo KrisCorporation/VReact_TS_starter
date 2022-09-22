@@ -1,0 +1,32 @@
+html, body {
+  margin:0px;
+  height:100%;
+}
+
+#root {
+
+}
+
+.test{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: block;
+  background-color: #1E1E1E;
+}
+
+.debug{
+  background-color: #1E1E1E;
+  color: aliceblue;
+  border: white;
+  border: solid 1px;
+  margin-bottom: 20px;
+}
+
+.debuging{
+  // margin-bottom: 20px;
+}
+
+.controlers{
+  padding: 10px;
+}
